@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/m_search"
+        android:title="@string/m_search"
+        android:icon="@drawable/ic_search_black"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:iconTint="@color/color_yellow"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/m_bookmark"
+        android:icon="@drawable/ic_bookmark"
+        android:title="@string/m_bookmark"
+        app:iconTint="@color/color_yellow"
+        app:showAsAction="always" />
+</menu>

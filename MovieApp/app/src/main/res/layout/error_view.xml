@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <data>
+
+        <variable
+            name="title"
+            type="String"/>
+        <variable
+            name="message"
+            type="String" />
+        <variable
+            name="retry"
+            type="com.movie.app.view.util.RetryCallback"/>
+    </data>
+
+    <merge>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/errorView"
+            android:padding="16dp"
+            android:visibility="gone"
+            android:background="@color/color_text"
+            android:clickable="false"
+            android:orientation="vertical">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{message}" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->retry.onRetry()}"
+                android:text="@{title==null?@string/m_retry:title}" />
+        </LinearLayout>
+    </merge>
+</layout>

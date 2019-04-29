@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/home_navigation"
+    app:startDestination="@id/homeView">
+
+    <fragment
+        android:id="@+id/homeView"
+        android:name="com.movie.app.view.home.HomeView"
+        android:label="Home">
+        <action
+            android:id="@+id/navigate_to_bookmark"
+            app:destination="@id/bookMarkView" />
+        <action
+            android:id="@+id/action_homeView_to_details"
+            app:destination="@id/details" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookMarkView"
+        android:name="com.movie.app.view.book_mark.BookMarkView"
+        android:label="BookMark" />
+    <fragment
+        android:id="@+id/details"
+        android:name="com.movie.app.view.movie_details.Details">
+
+        <action
+            android:id="@+id/action_details_to_bookMarkView"
+            app:destination="@id/bookMarkView" />
+        <argument
+            android:name="movieId"
+            app:type="string" />
+        <argument
+            android:name="title"
+            app:type="string" />
+    </fragment>
+</navigation>

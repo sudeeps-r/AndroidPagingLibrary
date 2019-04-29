@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.movie.app.core.domain.model.Rating"/>
+
+        <variable
+            name="movieDetails"
+            type="com.movie.app.core.domain.model.MovieDetails" />
+    </data>
+
+    <merge>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_bg">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:orientation="vertical">
+
+                <ImageView
+                    app:imgUrl="@{movieDetails.Poster}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_divider"
+                    android:layout_marginBottom="16dp" />
+
+                <TextView
+                    style="@style/t_details"
+                    android:text="Movie Details" />
+
+                <TextView
+                    style="@style/t_details"
+                    android:text="@{movieDetails.Title +` (`+ movieDetails.Year + `)`}" />
+
+                <TextView
+                    style="@style/t_details"
+                    android:text="@{`Director:` + movieDetails.Actors}" />
+
+                <TextView
+                    style="@style/t_details"
+                    android:text="@{`Writers:` + movieDetails.Writer}" />
+
+                <TextView
+                    style="@style/t_details"
+                    android:text="@{`Actors:` + movieDetails.Actors}" />
+
+                <TextView
+                    style="@style/t_details"
+                    android:text="@{`Awards:` + movieDetails.Awards}" />
+
+                <TextView
+                    style="@style/t_details"
+                    android:text="@{`Genre:` + movieDetails.Genre}" />
+
+                <TextView
+                    style="@style/t_details"
+                    android:text="@{`IMDB Rating:` + movieDetails.imdbRating}" />
+
+                <TextView
+                    style="@style/t_details"
+                    android:text="@{`Plot:` + movieDetails.Plot}" />
+
+            </LinearLayout>
+        </ScrollView>
+    </merge>
+</layout>

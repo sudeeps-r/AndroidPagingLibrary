@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="message"
+            type="String" />
+
+        <variable
+            name="retry"
+            type="com.movie.app.view.util.RetryCallback" />
+
+        <variable
+            name="movieDetails"
+            type="com.movie.app.core.domain.model.MovieDetails" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/m_details"
+            app:movieDetails="@{movieDetails}" />
+
+        <include
+            layout="@layout/error_view"
+            app:message="@{message}"
+            app:retry="@{retry}" />
+
+        <include layout="@layout/loading_view" />
+
+    </RelativeLayout>
+</layout>

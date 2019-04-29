@@ -1,0 +1,91 @@
+apply plugin: 'com.android.application'
+
+apply plugin: plugin.kotlin_android
+
+apply plugin: plugin.kotlin_android_etn
+
+apply plugin: plugin.kotlin_antn_pro
+
+apply plugin: plugin.jetbrain_extn
+
+apply plugin: plugin.safe_args
+
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.movie.app"
+        minSdkVersion build_version.min_sdk
+        targetSdkVersion build_version.target_sdk
+        versionCode build_version.version_code
+        versionName build_version.versionName
+        buildConfigField  "String" , "SERVER" , project.SERVER
+        buildConfigField "String", "API_KEY",project.API_KEY
+        buildConfigField  "Boolean" , "MOCKABLE" , project.ENABLE_MOCK
+        testInstrumentationRunner "android.support.row_item.runner.AndroidJUnitRunner"
+    }
+
+    testOptions {
+        animationsDisabled = true
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+    buildTypes {
+        debug{
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    implementation dep.kotlin.stdlib
+    implementation dep.app_compact.v7
+    implementation dep.app_compact.constraint
+    implementation dep.app_compact.material
+    implementation dep.rxJava.java
+    implementation dep.rxJava.android
+    implementation dep.archComponent.lifecycle
+    implementation dep.retrofit.retrofit
+    implementation dep.retrofit.convertor
+    implementation dep.retrofit.rxjava2
+    implementation dep.retrofit.logger
+    implementation dep.gson
+    implementation dep.dagger.dagger
+    implementation dep.util.logger
+    implementation dep.util.picasso
+    implementation dep.util.navigation
+    implementation dep.util.nav_ui
+
+
+
+    kapt dep.dagger.compiler
+    kapt dep.dagger.androidAnnt
+    implementation dep.dagger.androidSupport
+
+
+    implementation dep.room.runtime
+    implementation dep.room.rxjava
+    kapt dep.room.compiler
+    implementation dep.paging.runtime
+
+    testImplementation dep.app_test.junit
+    testImplementation dep.app_test.mockito_kotlin
+    testImplementation dep.app_test.mock_webserver
+    kaptTest dep.dagger.compiler
+    testImplementation dep.dagger.compiler
+    testImplementation dep.app_test.arch_component
+    androidTestImplementation dep.app_test.runner
+    androidTestImplementation dep.app_test.espresso
+
+}

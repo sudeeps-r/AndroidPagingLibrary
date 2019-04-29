@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+        <import type="com.movie.app.core.util.Status" />
+
+        <variable
+            name="rowClick"
+            type="com.movie.app.view.home.HomeViewModel" />
+
+        <variable
+            name="rowItem"
+            type="com.movie.app.core.util.NetworkState" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/color_bg"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/errorMessageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@{rowItem.message}"
+            android:textColor="@color/color_text"
+            android:visibility="@{rowItem.message != null? View.VISIBLE : View.GONE}" />
+
+        <ProgressBar
+            android:id="@+id/loadingProgressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{rowItem.status == Status.RUNNING? View.VISIBLE : View.GONE}" />
+
+        <Button
+            android:id="@+id/retryLoadingButton"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="@{()->rowClick.retry()}"
+            android:text="@string/m_retry"
+            android:visibility="@{rowItem.status == Status.FAILED? View.VISIBLE : View.GONE}" />
+
+    </LinearLayout>
+
+
+</layout>

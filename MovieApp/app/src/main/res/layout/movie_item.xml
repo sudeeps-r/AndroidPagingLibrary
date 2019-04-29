@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="rowClick"
+            type="com.movie.app.view.home.MovieItemListener" />
+
+        <variable
+            name="rowItem"
+            type="com.movie.app.core.domain.model.Movie" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_bg"
+        android:orientation="vertical"
+        android:onClick="@{()->rowClick.onItemClicked(rowItem)}"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/ivAlbumArt"
+            android:layout_width="@dimen/row_height"
+            android:layout_height="@dimen/row_height"
+            imgUrl="@{rowItem.poster}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivBookMark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_bookmark"
+            android:tint="@{rowItem.isBookmarked?@color/color_yellow:@color/color_divider}"
+            android:onClick="@{()->rowClick.onBookMark(rowItem)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            preComText="@{rowItem.title + `(`+ rowItem.year + `)`}"
+            android:textColor="@color/color_text"
+            app:layout_constraintEnd_toStartOf="@+id/ivBookMark"
+            app:layout_constraintStart_toEndOf="@+id/ivAlbumArt"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

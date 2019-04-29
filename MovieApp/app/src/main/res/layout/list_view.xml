@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String"/>
+        <variable
+            name="message"
+            type="String" />
+
+        <variable
+            name="retry"
+            type="com.movie.app.view.util.RetryCallback" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_bg"
+            android:orientation="vertical" />
+
+        <include
+            layout="@layout/error_view"
+            app:message="@{message}"
+            app:title="@{title}"
+            app:retry="@{retry}" />
+
+        <include
+            layout="@layout/loading_view" />
+    </RelativeLayout>
+</layout>
